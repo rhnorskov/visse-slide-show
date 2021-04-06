@@ -23,15 +23,17 @@ export function Gallery({ images, interval, fullscreen }: GalleryProps) {
 
 	return (
 		<S.Container handle={fullscreen}>
-			<AnimatePresence>
-				<S.Image
-					key={index}
-					path={images[index]}
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-				/>
-			</AnimatePresence>
+			{images.length && (
+				<AnimatePresence>
+					<S.Image
+						key={index}
+						path={images[index]}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+					/>
+				</AnimatePresence>
+			)}
 		</S.Container>
 	);
 }

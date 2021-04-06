@@ -18,6 +18,9 @@ const createWindow = (): void => {
 		},
 	});
 
+	// hide the menu
+	mainWindow.setMenu(null);
+
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
