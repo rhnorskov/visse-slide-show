@@ -13,62 +13,6 @@
 		"publish": "electron-forge publish",
 		"lint": "eslint --ext .ts ."
 	},
-	"config": {
-		"forge": {
-			"packagerConfig": {},
-			"makers": [
-				{
-					"name": "@electron-forge/maker-squirrel",
-					"config": {
-						"name": "visse_slide_show"
-					}
-				},
-				{
-					"name": "@electron-forge/maker-zip",
-					"platforms": [
-						"darwin"
-					]
-				},
-				{
-					"name": "@electron-forge/maker-deb",
-					"config": {}
-				},
-				{
-					"name": "@electron-forge/maker-rpm",
-					"config": {}
-				}
-			],
-			"publishers": [
-				{
-					"name": "@electron-forge/publisher-github",
-					"config": {
-						"repository": {
-							"owner": "rhnorskov",
-							"name": "visse-slide-show"
-						}
-					}
-				}
-			],
-			"plugins": [
-				[
-					"@electron-forge/plugin-webpack",
-					{
-						"mainConfig": "./webpack.main.config.js",
-						"renderer": {
-							"config": "./webpack.renderer.config.js",
-							"entryPoints": [
-								{
-									"html": "./src/index.html",
-									"js": "./src/renderer.tsx",
-									"name": "main_window"
-								}
-							]
-						}
-					}
-				]
-			]
-		}
-	},
 	"dependencies": {
 		"async": "^3.2.0",
 		"electron-squirrel-startup": "^1.0.0",
