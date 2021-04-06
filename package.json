@@ -1,0 +1,118 @@
+{
+	"name": "visse-slide-show",
+	"version": "1.0.0",
+	"description": "My Electron application description",
+	"keywords": [],
+	"license": "MIT",
+	"author": "rhn",
+	"main": ".webpack/main",
+	"scripts": {
+		"start": "electron-forge start",
+		"package": "electron-forge package",
+		"make": "electron-forge make",
+		"publish": "electron-forge publish",
+		"lint": "eslint --ext .ts ."
+	},
+	"config": {
+		"forge": {
+			"packagerConfig": {},
+			"makers": [
+				{
+					"name": "@electron-forge/maker-squirrel",
+					"config": {
+						"name": "visse_slide_show"
+					}
+				},
+				{
+					"name": "@electron-forge/maker-zip",
+					"platforms": [
+						"darwin"
+					]
+				},
+				{
+					"name": "@electron-forge/maker-deb",
+					"config": {}
+				},
+				{
+					"name": "@electron-forge/maker-rpm",
+					"config": {}
+				}
+			],
+			"publishers": [
+				{
+					"name": "@electron-forge/publisher-github",
+					"config": {
+						"repository": {
+							"owner": "rhnorskov",
+							"name": "visse-slide-show"
+						}
+					}
+				}
+			],
+			"plugins": [
+				[
+					"@electron-forge/plugin-webpack",
+					{
+						"mainConfig": "./webpack.main.config.js",
+						"renderer": {
+							"config": "./webpack.renderer.config.js",
+							"entryPoints": [
+								{
+									"html": "./src/index.html",
+									"js": "./src/renderer.tsx",
+									"name": "main_window"
+								}
+							]
+						}
+					}
+				]
+			]
+		}
+	},
+	"dependencies": {
+		"async": "^3.2.0",
+		"electron-squirrel-startup": "^1.0.0",
+		"framer-motion": "^4.1.2",
+		"lodash": "^4.17.21",
+		"mime": "^1.6.0",
+		"mime-types": "^2.1.30",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-dropzone": "^11.3.2",
+		"react-full-screen": "^1.0.2",
+		"react-split": "^2.0.10",
+		"styled-components": "^5.2.3",
+		"tailwindcss": "^2.1.1"
+	},
+	"devDependencies": {
+		"@electron-forge/cli": "^6.0.0-beta.54",
+		"@electron-forge/maker-deb": "^6.0.0-beta.54",
+		"@electron-forge/maker-rpm": "^6.0.0-beta.54",
+		"@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+		"@electron-forge/maker-zip": "^6.0.0-beta.54",
+		"@electron-forge/plugin-webpack": "^6.0.0-beta.54",
+		"@electron-forge/publisher-github": "*",
+		"@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+		"@rhnorskov/eslint-config": "^1.0.0",
+		"@rhnorskov/prettier-config": "^1.0.0",
+		"@types/async": "^3.2.6",
+		"@types/lodash": "^4.14.168",
+		"@types/mime": "^2.0.3",
+		"@types/mime-types": "^2.1.0",
+		"@types/react": "^17.0.3",
+		"@types/react-dom": "^17.0.3",
+		"@types/styled-components": "^5.1.9",
+		"@typescript-eslint/eslint-plugin": "^4.21.0",
+		"@typescript-eslint/parser": "^4.21.0",
+		"css-loader": "^5.2.0",
+		"electron": "12.0.2",
+		"eslint": "^7.23.0",
+		"fork-ts-checker-webpack-plugin": "^6.2.0",
+		"node-loader": "^2.0.0",
+		"style-loader": "^2.0.0",
+		"ts-loader": "^8.1.0",
+		"tsconfig-paths-webpack-plugin": "^3.5.1",
+		"typescript": "^4.2.3"
+	},
+	"productName": "visse-slide-show"
+}
